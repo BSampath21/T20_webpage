@@ -98,7 +98,7 @@
               </div>
               <div class="mb-3">
               <select class="form-select" aria-label="Default select example">
-  <option selected id="teamName" onchange="ConditionalFields()">Team Name</option>
+  <option selected id="teamName" onchange="ConditionalFields()" required>Team Name</option>
   <option value="1">India</option>
   <option value="2">Australia</option>
   <option value="3">England</option>
@@ -127,6 +127,8 @@
   </label>
 </div>
               <button type="submit" class="btn btn-primary mt-4">Submit</button>
+              <button type="reset" class="btn btn-primary mt-4">Reset</button>
+              <button type="delete" class="btn btn-primary mt-4">Delete</button>
             </form>
           </div>
         </div>
