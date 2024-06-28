@@ -4,12 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: white;
+        }
+        </style>
   </head>
 
   <body>
-    <button id="btn" onclick="fetchData()">Click me</button>
-    <div class="container">
-      <table id="table table-bordered">
+    <button id="btn" onclick="fetchData()">Click to fetch data</button>
+    <button id="upbtn" >Update Data</button>
+      <table id="table">
         <thead class="table-dark">
           <tr>
             <th>Name</th>
