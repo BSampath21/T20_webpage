@@ -1,0 +1,30 @@
+body {
+  background-color: rgb(42, 10, 102);
+}
+
+.h2 {
+  text-align: center;
+}
+
+footer {
+  position: relative;
+}
+
+#footer-ball {
+  width: 50px;
+  cursor: pointer;
+}
+
+#footer-ball:hover {
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

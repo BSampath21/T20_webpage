@@ -6,3 +6,7 @@
   height: 200px;
   object-fit: contain;
 }
+
+body {
+  background-color: rgb(42, 10, 102);
+}
