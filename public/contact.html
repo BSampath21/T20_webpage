@@ -4,27 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"crossorigin="anonymous">
+    </script>
+
     <style>
-        .errormsg{
-          display:none;
-        }
+      .error-header {
+      color: red;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      }
+
+      .conditional-fields{
+        display:none;
+      }
     </style>
   </head>
   
   <body>
-      <div id="errorContainer" class="errormsg"></div>
-     <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <div class="d-flex align-items-center">
           <a class="navbar-brand" href="#">
@@ -38,101 +39,89 @@
               <a class="nav-link" href="home.html"> <p class="fs-4">Home</p></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="teams.html"
-                ><p class="fs-4">Teams</p></a
-              >
+              <a class="nav-link" href="teams.html"><p class="fs-4">Teams</p></a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link" href="contact.html"><p class="fs-4">Contact</p></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html"
-                ><p class="fs-4">Contact</p></a
-              >
+              <a class="nav-link" href="posts.html"><p class="fs-4">Posts</p></a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+    
+    <div id="errorLine" class="error-header" style="display: none;">Please check your data</div>
 
-    <div class="container mt-3 border border-3 border-dark">
+    <div class="container mt-5 border border-3 border-dark">
       <h1 class="text-center mt-4 mb-4">Contact Us</h1>
-
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="contact-form">
             <form id="contact" onsubmit="return validateForm()">
               <div class="mb-3">
                 <label for="fullName" class="form-label"> Full Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="fullName"
-                  placeholder="Enter your full name" required
-                />
+                <input type="text" class="form-control" id="fullName" placeholder="Enter your full name"/>
               </div>
+
+
               <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
-
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Enter your email address" required
-                />
+                <input type="email" class="form-control" id="email" placeholder="Enter your email address"/>
               </div>
+
+
               <div class="mb-3">
                 <label for="phonenum" class="form-label">Mobile Number</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="phonenum"
-                  placeholder="Enter your number" required
-                />
+                <input type="text" class="form-control" id="phonenum" placeholder="Enter your number"/>
               </div>
+
+
               <div class="mb-3">
                 <label for="message" class="form-label">Message</label>
-                <textarea
-                  class="form-control"
-                  id="message"
-                  rows="4"
-                  placeholder="Write your message here"
-                ></textarea>
+                <textarea class="form-control" id="message" rows="4" placeholder="Write your message here"></textarea>
               </div>
+
+
               <div class="mb-3">
-              <select class="form-select" aria-label="Default select example">
-  <option selected id="teamName" onchange="ConditionalFields()" required>Team Name</option>
-  <option value="1">India</option>
-  <option value="2">Australia</option>
-  <option value="3">England</option>
-  <option value="4">Pakistan</option>
-  <option value="2">South Africa</option>
-  <option value="3">WestIndies</option>
-</select>
-</div>
-<div class="form-check mb-3">
-  <input class="form-check-input conditionalFields" type="checkbox" value="" id="flexCheck">
-  <label class="form-check-label" for="flexCheck">
-    Do you want to receive a whatsapp notification
-  </label>
-</div>
-<label>Do you like T20?</label>
-<div class="form-check">
-  <input class="form-check-input conditionalFields" type="radio" name="flexRadioDefault" id="flexRadio">
-  <label class="form-check-label" for="flexRadio">
-    Yes
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input conditionalFields" type="radio" name="flexRadioDefault" id="flexRadio">
-  <label class="form-check-label" for="flexRadio">
-    No
-  </label>
-</div>
-              <button type="submit" class="btn btn-primary mt-4">Submit</button>
-              <button type="reset" class="btn btn-primary mt-4">Reset</button>
-              <button type="delete" class="btn btn-primary mt-4">Delete</button>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected id="teamName">Team Name</option>
+                  <option value="1">India</option>
+                  <option value="2">Australia</option>
+                  <option value="3">England</option>
+                  <option value="4">Pakistan</option>
+                  <option value="5">South Africa</option>
+                  <option value="6">WestIndies</option>
+                </select>
+              </div>
+
+              <div id="conditionalFields" class="conditional-fields">
+              <div class="form-check mb-3">
+                <input class="form-check-input conditionalFields" type="checkbox" value="" id="flexCheck">
+                <label class="form-check-label" for="flexCheck">
+                 Do you want to receive a whatsapp notification
+                </label>
+              </div>
+              <label>Do you like T20?</label>
+              <div class="form-check">
+                <input class="form-check-input conditionalFields" type="radio" name="flexRadioDefault" id="flexRadio">
+                <label class="form-check-label" for="flexRadio">Yes</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input conditionalFields" type="radio" name="flexRadioDefault" id="flexRadio">
+                <label class="form-check-label" for="flexRadio">No</label>
+              </div>
+              </div>
+
+              <button type="submit" id="submitButton"class="btn btn-primary mt-4">Submit</button>
+              <button type="submit" id="reset" class="btn btn-primary mt-4">Reset</button>
+              <button type="submit" id="delete" class="btn btn-primary mt-4">Delete</button>
             </form>
           </div>
         </div>
       </div>
+    </div>
     <script src="contact.js"></script>
   </body>
 </html>

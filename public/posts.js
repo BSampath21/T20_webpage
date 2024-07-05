@@ -1,4 +1,4 @@
-fetchData();
+/*fetchData();
 
 async function fetchData() {
   try {
@@ -21,7 +21,7 @@ async function fetchData() {
   } catch (error) {
     console.error("Error :", error);
   }
-}
+}*/
 
 const userIdToName = {
   1: "Athota Srilatha",
@@ -40,38 +40,39 @@ const userIdToName = {
 
 class Post {
   constructor(userId, title, body) {
-    this.userId = userId;
     this.title = title;
     this.body = body;
     this.name = userIdToName[userId] || "Unknown";
   }
 }
 
-async function updateData() {
+async function fetchData() {
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await response.json();
-    console.log("response:", data);
+    console.log("API Response:", data);
 
-    const posts = data.map(
-      (post) => new Post(post.userId, post.title, post.body)
-    );
-    console.log("Posts:", posts);
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = '';
 
-    return posts;
+    data.forEach(post => {
+      const { userId, title, body } = post;
+      const postObj = new Post(userId, title, body);
+      const row = `
+        <tr>
+          <td>${postObj.name}</td>
+          <td>${postObj.title}</td>
+          <td>${postObj.body}</td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
   } catch (error) {
-    console.error("Error:", error);
-    return [];
+    console.error('Error fetching data:', error);
   }
 }
+const updateButton = document.getElementById("updateButton");
+updateButton.addEventListener('click', fetchData);
 
-async function fun() {
-  try {
-    const posts = await updateData();
-    console.log("Fetched Posts:", posts);
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
+fetchData();
 
-fun();

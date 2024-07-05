@@ -1,5 +1,5 @@
 function validateForm() {
-  const ame = document.getElementById("fullName").value.trim();
+  const name = document.getElementById("fullName").value.trim();
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phonenum").value.trim();
   const teamName = document.getElementById("teamName").value;
@@ -45,3 +45,9 @@ function conditionalFields() {
     likeT20.style.display = "none";
   }
 }
+
+/*reset.addEventListener("click", function () {
+  form.reset();
+  notificationsDiv.classList.add("hidden");
+  errorMessage.classList.add("hidden");
+});*/
