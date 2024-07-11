@@ -9,7 +9,7 @@ end
 
 
   arr = [5,10,15,5,15,10,25]
-  puts duplicated_values(values)
+  puts duplicated_values(arr)
   
 
   
