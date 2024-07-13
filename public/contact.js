@@ -2,7 +2,7 @@ function validateForm() {
   const name = document.getElementById("fullName").value.trim();
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phonenum").value.trim();
-  const teamName = document.getElementById("teamName").value;
+  const teamName = document.getElementById("team").value;
 
   if (!name.match(/^[a-zA-Z ]+$/)) {
     alert("Name should contain only alphabets and spaces");
@@ -32,22 +32,24 @@ function validateEmail(email) {
   return mail.test(email);
 }
 
-function conditionalFields() {
-  const teamName = document.getElementById("teamName");
-  const notification = document.getElementById("flexCheck");
-  const likeT20 = document.getElementById("flexRadio");
+function toggleAdditionalFields() {
+  var teamName = document.getElementById("team").value;
+  var notificationFields = document.getElementById("conditionalFields");
+  var t20Fields = document.getElementById("t20Fields");
 
   if (teamName.value !== "") {
-    notification.style.display = "block";
-    likeT20.style.display = "block";
+      notificationFields.style.display = "block"; 
+      t20Fields.style.display = "block";  
   } else {
-    notification.style.display = "none";
-    likeT20.style.display = "none";
+      notificationFields.style.display = "none";  
+      t20Fields.style.display = "none";  
   }
+  document.getElementById("errorContainer").style.display = "none";
 }
 
-/*reset.addEventListener("click", function () {
-  form.reset();
-  notificationsDiv.classList.add("hidden");
-  errorMessage.classList.add("hidden");
-});*/
+function resetForm() {
+  document.getElementById("contact").reset(); 
+  document.getElementById("notificationFields").style.display = "none";  
+  document.getElementById("errorContainer").style.display = "none";
+}
+

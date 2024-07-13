@@ -3,7 +3,7 @@
 
 #  p = Player.where("players.age < ?",29).select('players.name')
 
-#p = Player.joins("INNER JOIN teams ON teams.id = players.team_id").select('players.name, teams.name')	
+#  p = Player.joins("INNER JOIN teams ON teams.id = players.team_id").select('players.name, teams.name')	
 
 #  p = Player.create(name: "Rohit", age: 34,position: 'Forward', team_id: 1 )
 

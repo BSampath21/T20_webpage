@@ -1,5 +1,6 @@
  create database t20_world_cup;
 
+  use t20_world_cup
  create table teams(id int Not Null AUTO_INCREMENT,
                  name varchar(100) Not Null Unique,
                  country varchar(100) Not Null,
@@ -23,12 +24,13 @@ select * from teams;
 
 select name from teams;
 
-select * from teams where name='Team C'
+select * from teams where name='Team C';
 
 select * from teams where founded < '1922';
 
 Insert into teams(name,country,founded) values('Team K', 'Norway', 1947);
 
-Update teams set country='Ireland' where name='Team D'
+Update teams set country='Ireland' where name='Team D';
 
 Delete from teams where name='Team K';
+

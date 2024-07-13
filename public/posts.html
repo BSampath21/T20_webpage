@@ -30,11 +30,10 @@
 
   <body>
       <form class="d-flex ms-auto search-form mb-3"  role="search">
-        <input class="form-control me-2" id="search" type="search" placeholder="Search Name" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        </div>
-    <button id="updateButton">Update Data</button>
+        <input type="text" id="searchInput" placeholder="Search by title">
+        <button type="button" id="searchButton">Search</button>
+      </form>
+      <button id="updateButton">Update Data</button>
       <table id="table">
         <thead class="table-dark">
           <tr>
@@ -43,10 +42,8 @@
             <th>Body</th>
           </tr>
         </thead>
-        <tbody id="tableBody">
-        </tbody>
+        <tbody id="tableBody"></tbody>
       </table>
-    </div>
     <script src="posts.js"></script>
   </body>
 </html>

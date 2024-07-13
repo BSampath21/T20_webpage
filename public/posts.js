@@ -71,6 +71,31 @@ async function fetchData() {
     console.error('Error fetching data:', error);
   }
 }
+
+function searchPosts() {
+  const input = document.getElementById("searchInput").value.trim().toLowerCase();
+  const tableRows = document.querySelectorAll("#tableBody tr");
+
+  tableRows.forEach(row => {
+    const nameCell = row.getElementsByTagName("td")[0]; 
+    const name = nameCell.textContent.trim().toLowerCase();
+
+    if (name.includes(input)) {
+      row.style.display = ""; 
+    } else {
+      row.style.display = "none"; 
+    }
+  });
+}
+
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener('click', searchPosts);
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener('keyup', function(event) {
+  if (event.key === "Enter") {
+    searchPosts();
+  }
+});
 const updateButton = document.getElementById("updateButton");
 updateButton.addEventListener('click', fetchData);
 
