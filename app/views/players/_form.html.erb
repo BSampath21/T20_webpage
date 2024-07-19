@@ -1,0 +1,42 @@
+<%= form_with(model: player) do |f| %>
+  <% if player.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+        <% player.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+  <p>
+  <%= f.label:name%>
+  <%= f.text_field :name %>
+  </p>
+  <p>
+  
+
+  <p>
+    <%= f.label:position%>
+    <%= f.text_field :position %>
+    </p>
+    <p>
+    <%= f.label:country%>
+    <%= f.text_field :country %>
+         <%= f.select :country, options_for_select(['USA','UK','Argentina']), prompt: 'Select Country' %>
+    </p>
+    <p>
+    <%= f.label:role%>
+    <%= f.text_field :role %>
+         <%= f.select :country, options_for_select(['allrounder','bowler','batsman']), prompt: 'Select Role' %>
+    </p>
+   
+  <%= f.label:description %>
+  <%= f.text_area :description %>
+  </p>
+    <%= f.submit %>
+  </div>
+<% end %>
