@@ -10,7 +10,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body> 
+     <%= render 'layouts/messages' %>
+     <%= render 'layouts/navigations' %>
+     <%= render 'layouts/footer' %>
     <%= yield %>
   </body>
 </html>
+

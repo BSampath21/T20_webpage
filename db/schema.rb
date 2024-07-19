@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_15_173721) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_19_074151) do
+  create_table "courses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "matches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "date"
     t.string "location"
@@ -29,6 +34,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_15_173721) do
     t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.column "role", "enum('allrounder','bowler','batsman')", default: "batsman", null: false
+    t.boolean "is_captain", default: false, null: false
+    t.boolean "is_active", default: true, null: false
+    t.text "description"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
@@ -36,6 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_15_173721) do
     t.string "name", limit: 100, null: false
     t.string "country", limit: 100, null: false
     t.integer "founded"
+    t.text "description"
     t.index ["name"], name: "name", unique: true
   end
 
