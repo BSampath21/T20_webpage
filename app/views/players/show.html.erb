@@ -2,9 +2,17 @@
 
 <%= render @player %>
 
+<p><strong>Name: </strong><%= @player.name%></p>
+<p><strong>Age: </strong><%= @player.age%></p>
+<p><strong>Position: </strong><%= @player.position%></p>
+<p><strong>Team_id: </strong><%= @player.team_id%></p>
+<p><strong>Role: </strong><%= @player.role%></p>
+<p><strong>Captain: </strong><%= @player.is_captain%></p>
+<p><strong>Active: </strong><%= @player.is_active%></p>
+<p><strong>Description: </strong><%= @player.description%></p>
+
 <div>
   <%= link_to "Edit this player", edit_player_path(@player) %> |
   <%= link_to "Back to players", players_path %>
-
   <%= button_to "Destroy this player", @player, method: :delete %>
 </div>
