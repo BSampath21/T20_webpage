@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+    before_action :permit_params, only: [:create, :update]
     def show
         @team = Team.find(params[:id])
     end
@@ -12,7 +13,7 @@ class TeamsController < ApplicationController
     end
 
     def create
-        @team = Team.new(team_params)
+        @team = Team.new(params[:team])
        if @team.save
         flash[:notice] = "Team was created successfully"
         redirect_to @team
@@ -27,7 +28,8 @@ class TeamsController < ApplicationController
     
     def update
         @team = Team.find(params[:id])
-        if @team.update(team_params)
+        
+        if @team.update(params[:team])
             flash[:notice] = "Team was updated successfully"
             redirect_to @team
           else
@@ -41,9 +43,14 @@ class TeamsController < ApplicationController
         redirect_to teams_path
     end
 
-    private
-    def team_params
-        params.require(:team).permit(:name, :country, :founded, :description)
-    end
+    # private
+
+   def permit_params
+      params.permit!
+   end
+
+    # def team_params
+    #     params.require(:team).permit(:name, :country, :founded, :description)
+    # end
     
 end
