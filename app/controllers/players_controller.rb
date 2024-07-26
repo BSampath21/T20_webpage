@@ -1,6 +1,9 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: %i[ show edit update destroy ]
-
+  before_destroy :delete_captain
+  after_create :update_team_player_count
+  after_destroy :update_team_player_count
+  before_create :checking_captain
   # GET /players or /players.json
   def index
     @players = Player.all
@@ -66,5 +69,21 @@ class PlayersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def player_params
       params.require(:player).permit(:name, :age, :position, :team_id, :role, :is_captain, :is_active, :description)
+    end
+
+    def delete_captain
+      if is_captain?
+        errors[:base] = "Can't delete captain"
+        throw(:abort)
+      end
+    end
+    def update_team_player_count
+      team.update(player_count: team.players.count)
+    end
+    def checking_captain
+      if team.players.where(is_captain: true).exists?
+        errors[:base] = "Team contains captain"
+        throw(:abort)
+      end
     end
 end
