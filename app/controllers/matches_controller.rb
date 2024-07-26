@@ -1,7 +1,6 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: %i[ show edit update destroy ]
-  before_create :validate_future_date
-  after_create :log_creation_message
+  before_action :authenticate_person!
 
   # GET /matches or /matches.json
   def index
@@ -70,16 +69,7 @@ class MatchesController < ApplicationController
       params.fetch(:match, {})
     end
 
-  def validate_future_date
-   if date.present? && date < Date.today
-    errors.add(:date, "cannot be in the past")
-    throw(:abort)
-   end
-  end
-
-  def log_creation_message
-    Rails.logger.info("Match created: #{self.inspect}")
-  end
+ 
 end
 
 

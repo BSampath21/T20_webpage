@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
     before_action :permit_params, only: [:create, :update]
+    before_action :authenticate_person!
     def show
         @team = Team.find(params[:id])
     end
