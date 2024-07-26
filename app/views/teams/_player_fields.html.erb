@@ -1,0 +1,43 @@
+<!-- app/views/teams/_player_fields.html.erb -->
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position %>
+    <%= f.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %>
+    <%= f.text_field :role %>
+  </div>
+
+  <div class="field">
+  <%= f.label :is_captain %>
+  <%= f.label :is_captain, "Yes", value: "true"  %>
+  <%= f.radio_button :is_captain, true %>
+  <%= f.label :is_captain, "No", value: "false" %>
+  <%= f.radio_button :is_captain, false, checked: true %>
+</div>
+
+  <div class="field">
+    <%= f.label :is_active %>
+    <%= f.check_box :is_active %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <a href="#" class="remove_player">Remove Player</a>
+   <%= f.hidden_field :_destroy %>
+</div>

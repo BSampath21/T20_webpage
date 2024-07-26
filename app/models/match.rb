@@ -8,7 +8,10 @@ class Match < ApplicationRecord
 
 scope :upcoming, -> { where("date > ?", Time.now) }
 
-  
+validates :date, presence: true
+validates :location, presence: true
+validates :home_team_id, presence: true
+validates :away_team_id, presence: true
 
   def validate_future_date
     if date.present? && date < Date.today

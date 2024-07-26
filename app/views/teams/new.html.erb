@@ -34,4 +34,16 @@
     </p>
 <% end %>
 
+ <h3>Players</h3>
+  <div id="players">
+    <%= f.fields_for :players do |player_form| %>
+      <%= render 'player_fields', f: player_form %>
+    <% end %>
+  </div>
+
+  <button type="button" id="add_player">Add Player</button>
+    <p>
+    <%= f.submit 'Save', class: 'btn btn-success'%>
+    </p>
+<% end %>
 
